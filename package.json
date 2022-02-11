@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "solr-proxy": "^6.0.1"
+    "solr-proxy": "^7.0.0"
   }
 }
