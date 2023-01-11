@@ -1,5 +1,6 @@
 {
+  "type": "module",
   "dependencies": {
-    "solr-proxy": "^6.0.1"
+    "solr-proxy": "^9.1.0"
   }
 }
