@@ -1,4 +1,4 @@
-const SolrProxy = require('solr-proxy');
+import SolrProxy from 'solr-proxy';
 
 const optionsEnv = {
   listenPort: 'PORT',
@@ -18,16 +18,13 @@ const options = {
   validHttpMethods: process.env[optionsEnv.validHttpMethods] ? process.env[optionsEnv.validHttpMethods].split(',') : ['GET'],
   validPaths: process.env[optionsEnv.validPaths] ? process.env[optionsEnv.validPaths].split(',') : ['/solr/select'],
   invalidParams: process.env[optionsEnv.invalidParams] ? process.env[optionsEnv.invalidParams].split(',') : ['qt', 'stream'],
-  backend: {
-    host: process.env[optionsEnv.backend.host] || 'solr',
-    port: parseInt(process.env[optionsEnv.backend.port], 10) || 8983
-  },
+  upstream: 'http://' + (process.env[optionsEnv.backend.host] || 'solr') + ':' + (parseInt(process.env[optionsEnv.backend.port], 10) || 8983),
   maxRows: parseInt(process.env[optionsEnv.maxRows], 10) || 200,
   maxStart: parseInt(process.env[optionsEnv.maxStart], 10) || 1000
 }
 
 console.log(`Starting Server on Port ${options.listenPort}`);
-console.log(`Connection setup to ${options.backend.host}:${options.backend.port}`);
+console.log(`Connection setup to ${options.upstream}`);
 console.log(`Options can be set via Following ENV variables:`);
 console.log(optionsEnv);
 console.log(`Options used for solr-proxy:`);

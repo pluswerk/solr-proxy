@@ -1,4 +1,4 @@
-FROM node:17.7.1-alpine
+FROM node:19.4.0-alpine
 
 WORKDIR /app
 
@@ -6,6 +6,7 @@ COPY . /app
 
 RUN npm i -g npm && npm i
 
-ENV DEBUG="solr-proxy,http-proxy"
+ENV DEBUG="solr-proxy,http-proxy" \
+    NODE_DEBUG="solr-proxy,http-proxy"
 
 CMD node index.js
