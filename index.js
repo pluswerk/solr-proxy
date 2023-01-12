@@ -14,6 +14,7 @@ const optionsEnv = {
 }
 
 const options = {
+  listenHost: '0.0.0.0',
   listenPort: parseInt(process.env[optionsEnv.listenPort], 10) || 8008,
   validHttpMethods: process.env[optionsEnv.validHttpMethods] ? process.env[optionsEnv.validHttpMethods].split(',') : ['GET'],
   validPaths: process.env[optionsEnv.validPaths] ? process.env[optionsEnv.validPaths].split(',') : ['/solr/select'],
