@@ -25,7 +25,7 @@ version: '3.6'
 
 services:
   solr-proxy:
-    image: pluswerk/solr-proxy
+    image: ghcr.io/pluswerk/solr-proxy
     ports:
       - "0.0.0.0:8983:8008"
     environment:
