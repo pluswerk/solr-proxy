@@ -29,9 +29,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
         name: Build and push (push only in main branch)
         id: docker_build
         uses: docker/build-push-action@v4
         with:
           push: ${{ github.ref == 'refs/heads/main' }}
-          tags: ghcr.io/pluswerk/solr-proxy:latest,ghcr.io/pluswerk/solr-proxy:${{ steps.date.outputs.date }}
+          tags: ghcr.io/pluswerk/solr-proxy:latest,ghcr.io/pluswerk/solr-proxy:${{ steps.date.outputs.date }},pluswerk/solr-proxy:latest,pluswerk/solr-proxy:${{ steps.date.outputs.date }}
